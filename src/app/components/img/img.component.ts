@@ -1,4 +1,4 @@
-import { Component, OnInit, Input , Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Input , Output, EventEmitter,SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-img',
@@ -6,11 +6,21 @@ import { Component, OnInit, Input , Output, EventEmitter} from '@angular/core';
   styleUrls: ['./img.component.scss']
 })
 export class ImgComponent implements OnInit {
-  @Input() img : string  = '';
+  img : string  = '';
+  @Input('img') 
+  set changeImg(newImg :string) {
+    this.img = newImg;
+    console.log('change just img =>',this.img)
+  }
+  @Input() alt : string  = '';
   @Output() loaded = new EventEmitter<string>();
   imageDefault = './assets/images/imagen-no-disponible.png';
   constructor() { }
 
+  ngOnChanges(changes: SimpleChanges){
+    console.log('ngOnChanges','img =>',this.img);
+    console.log('inputs changes',changes);
+  }
   ngOnInit(): void {
   }
 
