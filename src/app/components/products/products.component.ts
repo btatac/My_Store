@@ -7,6 +7,8 @@ import {Product} from '../../models/product.models'
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
+  myShoppingCart : Product[] = [];
+  total = 0;
   products :Product [] = [
     {
       id: "1",
@@ -16,13 +18,13 @@ export class ProductsComponent implements OnInit {
     },
     {
       id: "2",
-      name: "Mario",
+      name: "Barbie",
       image :"https://keyassets-p2.timeincuk.net/wp/prod/wp-content/uploads/sites/63/2013/11/barbie-bestselling-toys-of-all-time-scaled.jpg",
       price : 200000
     },
     {
       id: "3",
-      name: "Toy_story",
+      name: "Locomotora",
       image :"https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
       price : 50000
     },
@@ -38,4 +40,8 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onAddToShoppingCart(product:Product){
+    this.myShoppingCart.push(product);
+    this.total = this.myShoppingCart.reduce((sum, item) => sum +item.price,0)
+  }
 }
