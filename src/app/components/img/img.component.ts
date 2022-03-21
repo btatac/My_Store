@@ -1,12 +1,13 @@
-import { Component, OnInit, Input , Output, EventEmitter,SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input , Output, EventEmitter,SimpleChanges, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-img',
   templateUrl: './img.component.html',
   styleUrls: ['./img.component.scss']
 })
-export class ImgComponent implements OnInit {
+export class ImgComponent implements OnChanges {
   img : string  = '';
+
   @Input('img') 
   set changeImg(newImg :string) {
     this.img = newImg;
@@ -20,8 +21,6 @@ export class ImgComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges){
     console.log('ngOnChanges','img =>',this.img);
     console.log('inputs changes',changes);
-  }
-  ngOnInit(): void {
   }
 
   imgError(){

@@ -1,5 +1,6 @@
 <p>La cantidad {{myShoppingCart.length}}</p>
 <p> Total: ${{total}} </p>
+<p> Convertir Vocales: {{title | convertVocal}}</p>
 <div class="products-grid">
     <app-product [product]="product" 
     *ngFor="let product of products"
